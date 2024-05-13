@@ -4,6 +4,8 @@ import os
 from crewai import Agent, Task, Crew
 from langchain_groq import ChatGroq
 
+# read aad-tuf-api.toml file
+MY_API = os.getenv("GROQ_API_KEY")
 
 def main():
 
@@ -16,7 +18,8 @@ def main():
 
     llm = ChatGroq(
             temperature=0, 
-            groq_api_key = st.secrets["GROQ_API_KEY"], 
+            groq_api_key = MY_API, 
+            # groq_api_key = st.secrets["GROQ_API_KEY"], 
             model_name=model
         )
 
